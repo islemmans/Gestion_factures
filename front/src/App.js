@@ -4,6 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import {CSSTransition} from 'react-transition-group';
 /*import { VscArrowRight } from "@react-icons/all-files/fa";*/
 import { VscArrowLeft } from 'react-icons/fa';
+import './Modal';
+import Modal from './Modal';
+import Paramgeneral from './Elements/Paramgeneral';
 
 
 function App() {
@@ -70,12 +73,14 @@ function DropDownParam(){
 
   function DropDownItem(props){
     return(
-    <a href='#' className='menu-item' onClick={()=>props.goToMenu && setActiveMenu(props.goToMenu)}>
+    <a className='menu-item' onClick={()=>props.goToMenu && setActiveMenu(props.goToMenu)}>
       {props.children}
     </a>
     );
   }
 
+  const[openModal,setOpenModal]= useState(false);
+    
   return(
     
     <div className='dropdown' style={{ height: menuHeight }} ref={dropdownRef}>
@@ -83,7 +88,10 @@ function DropDownParam(){
       onEnter={calcHeight}>
         <div className='menu'>
           <DropDownItem>
-             Paramètres globales
+            <a onClick={()=>{setOpenModal(true)}}>
+              Paramètres globales
+            </a>
+            {openModal && <Paramgeneral closeModal={setOpenModal}/>}
           </DropDownItem>
           <DropDownItem>
             Honoraire en extra
