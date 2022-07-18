@@ -10,7 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TaskForm from "./task/TaskForm";
 import TasksList from "./task/TasksList";
 
-export default function  Empdossier() {
+export default function  Typedossier() {
   const [open, setOpen] = React.useState(false);
   const [tasks, setTasks] = useState([
     
@@ -66,7 +66,7 @@ export default function  Empdossier() {
       <DialogActions>
           <Button onClick={handleClose} style={{ padding: "5px", marginLeft: "200px",width:"3px"}} >X</Button>
         </DialogActions>
-      <DialogTitle style={{color:"red"}}>Emplacement dossier</DialogTitle>
+      <DialogTitle style={{color:"red"}}>Listes de type dossier</DialogTitle>
         <DialogTitle>Ibelle</DialogTitle>
         <DialogContent>
         

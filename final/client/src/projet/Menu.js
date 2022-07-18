@@ -3,8 +3,9 @@ import '../index.css';
 import { useState, useEffect, useRef } from 'react';
 import {CSSTransition} from 'react-transition-group';
 /*import { VscArrowRight } from "@react-icons/all-files/fa";*/
-import { VscArrowLeft } from 'react-icons/fa';
 import Empdossier from './sousmenu/Empdossier';
+import Typedossier from './sousmenu/Typedossier';
+import Timbre from './sousmenu/Timbre';
 function Menu() {
   return (
     <Navbar>
@@ -93,16 +94,15 @@ function DropDownParam(){
             Debours
           </DropDownItem>
           <DropDownItem>
-          <a onClick={()=>{setOpenEmpdossier(true)}}>
-              Emplacement dossier
-            </a>
-            {openEmpdossier && < Empdossier closeModal={setOpenEmpdossier}/>}
+            Emplacement dossier
+                                             <Empdossier/>
           </DropDownItem>
           <DropDownItem>
             Tribunaux et administration
           </DropDownItem>
           <DropDownItem>
-            Type dossier
+            Type Dossier
+                                            <Typedossier/>
           </DropDownItem>
           <DropDownItem>
             Utilisateur
@@ -132,7 +132,9 @@ function DropDownParam(){
           <DropDownItem goToMenu="main">
             <h3>Debours</h3>
           </DropDownItem>
-          <DropDownItem>Timbre</DropDownItem>
+          <DropDownItem>Timbre
+                     <Timbre/>
+          </DropDownItem>
           <DropDownItem>Photocopie</DropDownItem>
           <DropDownItem>Transport</DropDownItem>
           <DropDownItem>Recette du finance</DropDownItem>

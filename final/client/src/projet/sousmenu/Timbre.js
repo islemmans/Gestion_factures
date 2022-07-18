@@ -9,8 +9,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TaskForm from "./task/TaskForm";
 import TasksList from "./task/TasksList";
+import './Timbre.css';
 
-export default function  Empdossier() {
+export default function  Timbre() {
   const [open, setOpen] = React.useState(false);
   const [tasks, setTasks] = useState([
     
@@ -67,7 +68,10 @@ export default function  Empdossier() {
           <Button onClick={handleClose} style={{ padding: "5px", marginLeft: "200px",width:"3px"}} >X</Button>
         </DialogActions>
       <DialogTitle style={{color:"red"}}>Emplacement dossier</DialogTitle>
-        <DialogTitle>Ibelle</DialogTitle>
+      <table>
+        <tr>
+         <td>Ibelle</td>
+         <td> 
         <DialogContent>
         
         <TasksList
@@ -75,12 +79,30 @@ export default function  Empdossier() {
           toggleTask={toggleTask}
           deleteTask={deleteTask}
         />
-         <TaskForm addTask={addTask}>
-          
-          </TaskForm>
-
+        
         </DialogContent>
        
+        </td>
+        </tr>
+
+        <tr>
+         <td>Montant</td>
+         <td> 
+        <DialogContent>
+        
+        <TasksList
+          tasks={tasks}
+          toggleTask={toggleTask}
+          deleteTask={deleteTask}
+        />
+        </DialogContent>
+       
+        </td>
+        </tr>
+     </table>
+     <TaskForm addTask={addTask}>
+          
+          </TaskForm>
       </Dialog>
     </div>
   );
