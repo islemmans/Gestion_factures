@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from 'axios';
 import {useState , useEffect} from "react";
-import{BrowserRouter as Router,Switch, Route,Routes,Link} from "react-router-dom";
+import{BrowserRouter as Router,Switch, Route,Routes,Link,useNavigate} from "react-router-dom";
 import Home from './Home';
 import Menu from "./Menu";
 import{useParams} from 'react-router-dom';
@@ -9,19 +9,31 @@ function Login(){
     const {id}=useParams();
     const [ email ,setemail ] =useState('')
     const [ password,setpassword] =useState('')
+  const navigate=useNavigate();
     const submitf = () =>{
-        Axios.post('http://localhost:3001/login',{
+      Axios.post('http://localhost:3001/login',{
           email:email,
-          password:password, 
-        }).then(()=>{
-           alert("successful insert")
-          });
+          password:password,
+        
+        }).then(
+            navigation()
+      )
+          
+         .catch(error=>{
+      console.log(error)
+         })
         };
-        const validationchamp=(e)=>{
-          if(email&&password){
-            return(true);
-          }
+      
+      function navigation(){
+        if(password&&email){
+          navigate('/menu')
         }
+      }
+   
+      
+
+
+      
     return(
         
         <div className="App">
@@ -34,12 +46,10 @@ function Login(){
           }}
           />
           <div id ="connecter">
-         <Link to='/menu'  >
-          <button onClick={(submitf) }  disabled={!validationchamp()}> se connecter
-          {  validationchamp()? <div><Routes><Route path='/menu' exact element={<Menu/>} ></Route></Routes></div>:
-          <div></div>
-                  }
-          </button></Link> 
+        
+          <button onClick={(submitf) } > se connecter
+         
+          </button>
           </div>
           <h3>Vous n'avez pas un compte ? <Link to='/home' >s'inscrire</Link> 
      <Routes><Route path='/home' exact element={<Home/>} ></Route></Routes> </h3>

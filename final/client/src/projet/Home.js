@@ -14,15 +14,15 @@ function Home() {
   const [ password,setpassword] =useState('')
   const [ password1 ,setpassword1 ] =useState('')
   const submitf = () =>{
-Axios.post('http://localhost:3001',{
+Axios.post('http://localhost:3001/register',{
   nom:nom,
   prenom:prenom,
   domaine: domaine,
   email:email,
   password:password,
   password1:password1,
-}).then(()=>{
-   alert("successful insert")
+}).then((response)=>{
+   console.log(response);
   });
 };
 const checkvalidation=(e)=>{

@@ -15,7 +15,7 @@ const db =mysql.createPool({
     app.use(express.json())
     app.use(bodyParser.urlencoded({extended:true}))
     app.post ("/",(req,res)=>{
-        const nom =req.body.nom
+        const nom =req.body.nom 
         const prenom =req.body.prenom
         const domaine=req.body.domaine
         const email=req.body.email
@@ -48,17 +48,18 @@ app.post('/login',(req,res)=>{
     
 console.log(password);
   db.query("Select * from `inscrire` WHERE `email`=? ", [email],function (err, res) {
-   if(err) 
-   console.log("error insertion : ", err);
-   if(res[0].email==undefined){
-    console.log("erreur")
-   }
+   if( !email) 
+   console.log("saisir votre adress email ");
    else{
+    if(!password){
+      console.log("saisir votre mot de passe :")
+    }
     console.log(res[0].password);
-    if(res[0].password==password) 
+    if(res[0].password==password){
     console.log("welcome");
+       }
     else
-    console.log("verifier votre password");}
+    console.log("verifier votre mot de passe");}
    
   }) ;
 
@@ -68,13 +69,3 @@ console.log(password);
      
       console.log("it is running !");
   });
-
-
-
-
-
-
-
-
-
-   

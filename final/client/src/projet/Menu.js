@@ -6,6 +6,7 @@ import {CSSTransition} from 'react-transition-group';
 import Empdossier from './sousmenu/Empdossier';
 import Typedossier from './sousmenu/Typedossier';
 import Timbre from './sousmenu/Timbre';
+import Gestionclient from './sousmenu/Gestionclient';
 function Menu() {
   return (
     <Navbar>
@@ -19,7 +20,7 @@ function Menu() {
       <NavItems icon='Rappel'></NavItems>
       <NavItems icon='Règlement'></NavItems>
       <NavItems icon='Etat Huissier'>
-        <DropDownMenu/>
+      
       </NavItems>
 
     </Navbar>
@@ -173,7 +174,11 @@ function DropDownMenu(){
       <CSSTransition in={activeMenu === 'client'} unmountOnExit timeout={500} classNames="parametres">
         <div className='menu'>
         <DropDownItem>
-            Hello
+            Gestion client
+                                    < Gestionclient/>
+        </DropDownItem>
+        <DropDownItem>
+          Fiche Signalitique
         </DropDownItem>
         </div>
       </CSSTransition>

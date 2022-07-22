@@ -8,35 +8,36 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import TaskForm from "./task/TaskForm";
 import TasksList from "./task/TasksList";
-function Timbre() {
-  const [tasks, setTasks] = useState([
+function Gestionclient() {
+    const [tasks, setTasks] = useState([
     
-  ]);
-  const addTask = (text) => {
-    const newTask = {
-      text,
-      id: Date.now(),
-      done: false,
+    ]);
+  
+    const addTask = (text) => {
+      const newTask = {
+        text,
+        id: Date.now(),
+        done: false,
+      };
+  
+      setTasks([...tasks, newTask]);
     };
-
-    setTasks([...tasks, newTask]);
-  };
-
-  const deleteTask = (id) => {
-    const filteredTasks = tasks.filter((t) => t.id !== id);
-    setTasks(filteredTasks);
-  };
-
-  const toggleTask = (id) => {
-    const realTask = tasks.find((t) => t.id === id);
-    const index = tasks.findIndex((t) => t.id === id);
-    const taskCopy = { ...realTask };
-    const tasksListCopy = [...tasks];
-
-    taskCopy.done = !taskCopy.done;
-    tasksListCopy[index] = taskCopy;
-    setTasks(tasksListCopy);
-  };
+  
+    const deleteTask = (id) => {
+      const filteredTasks = tasks.filter((t) => t.id !== id);
+      setTasks(filteredTasks);
+    };
+  
+    const toggleTask = (id) => {
+      const realTask = tasks.find((t) => t.id === id);
+      const index = tasks.findIndex((t) => t.id === id);
+      const taskCopy = { ...realTask };
+      const tasksListCopy = [...tasks];
+  
+      taskCopy.done = !taskCopy.done;
+      tasksListCopy[index] = taskCopy;
+      setTasks(tasksListCopy);
+    };
     const handleClickOpen = () => {
         setOpen(true);
        
@@ -47,17 +48,17 @@ function Timbre() {
        
       };
   const [rowData, setRowData] = useState([
-    {Iblle:'uu',Montant:'uuu'},
+    {make:'aya',model:'oui',price:'2000'},
+    {make:'eya',model:'oui',price:'1000'},
+    {make:'aya',model:'oui',price:'2000'},
   ]);
   const [open, setOpen] = React.useState(false);
   const gridRef = useRef();
 
   const [columnDefs, setColumnDefs] = useState([
-    {field: 'Iblle'},
-    {field: 'Montant'},
-    
-
-
+    {field: 'make'},
+    {field: 'model'},
+    {field: 'price'}
   ]);
 
   const defaultColDef = useMemo( ()=> (
@@ -86,19 +87,15 @@ function Timbre() {
          <Button  variant="outlined" style={{border:'none',color:'white',marginLeft: '0px', marginTop: '0px', margin:"0px"}} onClick={handleClickOpen}>
     
         </Button>
-        <Dialog open={open} onClose={handleClose}  >
-       
-         <DialogActions>
+        <Dialog open={open} onClose={handleClose}>
+      <DialogActions>
           <Button onClick={handleClose} style={{ padding: "5px", marginLeft: "200px",width:"3px"}} >X</Button>
-
-         </DialogActions>
-          <TaskForm addTask={addTask}>  
-          </TaskForm>
+        </DialogActions>
+   
       <div className="ag-theme-alpine" style={{width: 500, height: 500}} >
         <AgGridReact 
             ref={gridRef}
-            rowData={tasks}
-            columnDefs={columnDefs}
+            rowData={rowData} columnDefs={columnDefs}
             animateRows={true} rowSelection='multiple'
             onCellClicked={cellClickedListener}
             defaultColDef={defaultColDef}/>
@@ -109,4 +106,4 @@ function Timbre() {
   );
 }
 
-export default Timbre;
+export default Gestionclient;
